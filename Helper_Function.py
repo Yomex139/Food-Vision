@@ -38,14 +38,16 @@ import random
 import os
 from sklearn.metrics import confusion_matrix
 
-def bef_train_visual(path='10_food_classes_10_percent/train/'):
+def bef_train_visual(path=directory):
   '''
+  path:
+        could be training or testing directory
   Return:
         diplay four random unprocessed images from file
         directory
   '''
   #set up random class generator
-  randc = os.listdir('10_food_classes_10_percent/train/')
+  randc = os.listdir(path)
   class_name = ran.choice(randc)
   #set up random image generator
   rand = ran.sample(os.listdir(path+class_name+'/'),4)
@@ -61,7 +63,7 @@ def bef_train_visual(path='10_food_classes_10_percent/train/'):
     #visualizing the first batch of processed data(randomly)
 import random
 import os
-def visualize_after(image,label):
+def visualize_after(directory,image,label):
   '''
   visualizing dataset in batches after preprocessing
   image:
@@ -70,7 +72,7 @@ def visualize_after(image,label):
         a batch of preprocessed 32 acompany labels for the respective images
   '''
   rand_class = ran.sample(range(10),6)
-  class_name = np.array(os.listdir('10_food_classes_10_percent/train/'))
+  class_name = np.array(os.listdir(directory+'/'))
   for i in range(6):
     plt.subplot(3,3,i+1)
     class_ = class_name[np.argmax(label[rand_class[i]])]
