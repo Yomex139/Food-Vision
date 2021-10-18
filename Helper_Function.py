@@ -38,7 +38,7 @@ import random
 import os
 from sklearn.metrics import confusion_matrix
 
-def bef_train_visual(path=directory):
+def bef_train_visual(path):
   '''
   path:
         could be training or testing directory
