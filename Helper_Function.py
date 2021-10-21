@@ -38,10 +38,14 @@ import random
 import os
 from sklearn.metrics import confusion_matrix
 
-def bef_train_visual(path):
+def bef_train_visual(path,class_name):
   '''
   path:
         could be training or testing directory
+        
+  class_name:
+        names of all the available dataset classes
+        
   Return:
         diplay four random unprocessed images from file
         directory
@@ -63,8 +67,11 @@ def bef_train_visual(path):
     #visualizing the first batch of processed data(randomly)
 import random
 import os
-def visualize_after(directory,image,label):
+def visualize_after(directory,image,label,class_name):
   '''
+  class_name:
+        names of all the available dataset classes
+        
   visualizing dataset in batches after preprocessing
   image:
         a batch of preprocessed 32 images 
@@ -327,7 +334,13 @@ def calculate_results(y_true, y_pred):
                   "f1": model_f1}
   return model_results
 
-def visual_tf_dataset(data):
+def visual_tf_dataset(data,class_name):
+  '''
+  data:
+      downloaded dataset from tensorflow catalogue
+  class_name:
+      names of all the available dataset classes
+  '''
   plt.figure(figsize=(10,10))
   i=0
   for image,label in data.take(12):
