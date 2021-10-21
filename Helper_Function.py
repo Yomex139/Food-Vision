@@ -349,3 +349,14 @@ def visual_tf_dataset(data,class_name):
     plt.imshow(image)
     plt.title(f'Label:{class_name[label]}')
     plt.axis('off')
+    
+# Make a function for preprocessing images
+def preprocess_img(image, label, img_shape=224):
+  """
+  Converts image datatype from 'uint8' -> 'float32' and reshapes image to
+  [img_shape, img_shape, color_channels]
+  """
+  image = tf.image.resize(image, [img_shape, img_shape]) # reshape to img_shape
+  image = tf.image.convert_image_dtype(img,dtype=tf.float32) # convert to float 32
+  return image,label 
+
