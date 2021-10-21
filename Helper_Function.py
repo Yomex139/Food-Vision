@@ -68,6 +68,8 @@ def visualize_after(directory,image,label):
   visualizing dataset in batches after preprocessing
   image:
         a batch of preprocessed 32 images 
+  directory:
+        the path to the training,validating or testing directory
   label:
         a batch of preprocessed 32 acompany labels for the respective images
   '''
@@ -324,3 +326,13 @@ def calculate_results(y_true, y_pred):
                   "recall": model_recall,
                   "f1": model_f1}
   return model_results
+
+def visual_tf_dataset(data):
+  plt.figure(figsize=(10,10))
+  i=0
+  for image,label in data.take(12):
+    i += 1
+    plt.subplot(3,4,i)
+    plt.imshow(image)
+    plt.title(f'Label:{class_name[label]}')
+    plt.axis('off')
