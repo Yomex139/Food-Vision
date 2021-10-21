@@ -360,7 +360,7 @@ def preprocess_img(image, label, img_shape=224):
   image = tf.image.convert_image_dtype(img,dtype=tf.float32) # convert to float 32
   return image,label 
 
-def visualize_processed_data(data):
+def visualize_processed_data(data,class_name):
   '''
   accept raw data as input and ouput processed data as a tupple
    of images and labels after data as been preprocessed 
