@@ -367,12 +367,12 @@ def visualize_processed_data(data,class_name):
    '''
   plt.figure(figsize=(8,8))
   index=0
-  for images,labels in data.take(9):
+  for images,labels in data.unbatch().take(9):
     img = tf.image.resize(images,size=[224,224])
     img = tf.image.convert_image_dtype(img,dtype=tf.float32)
     index += 1
     plt.subplot(3,3,index)
-    plt.imshow(tf.squeeze(images,axis=0))
+    plt.imshow(images)
     plt.title(f'Label:{class_name[labels]}')
     plt.axis('off')
   print(f'size after preprocessed is {img.shape}');
