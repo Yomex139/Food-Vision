@@ -372,7 +372,7 @@ def visualize_processed_data(data,class_name):
     img = tf.image.convert_image_dtype(img,dtype=tf.float32)
     index += 1
     plt.subplot(3,3,index)
-    plt.imshow(images)
+    plt.imshow(tf.squeeze(images),axis=0)
     plt.title(f'Label:{class_name[labels]}')
     plt.axis('off')
   print(f'size after preprocessed is {img.shape}');
