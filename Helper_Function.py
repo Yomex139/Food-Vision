@@ -380,7 +380,7 @@ def visualize_processed_data(data,class_name):
 # create function to evaluate base model pridictions
 def text_metrics(y_true,y_pred):
   from sklearn.metrics import recall_score,precision_score,f1_score,confusion_matrix,accuracy_score,precision_recall_fscore_support
-import seaborn as sns
+  import seaborn as sns
   print(f'\nrecall score:{recall_score(y_true=y_true,y_pred=y_pred)*100:.2f}%\n')
   print(f'\nprecision_score:{precision_score(y_true=y_true,y_pred=y_pred)*100:.2f}%\n')
   print(f'\nf1_score:{f1_score(y_true=y_true,y_pred=y_pred)*100:.2f}%\n')
