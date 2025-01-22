@@ -388,3 +388,31 @@ def text_metrics(y_true,y_pred):
   print(f'\naccuracy score:{accuracy_score(y_true,y_pred)*100:.2f}%\n')
   print(f'\nmore beautiful matrix:{sns.heatmap(data=confusion_matric,annot=True)}\n')
 
+# Function to preprocess text data 
+def preprocess_text(filename):
+  input_lines = get_lines(filename) #get all lines from filename
+  abstract_lines = "" #create an empty abstract
+  abstract_samples = [] #create an empty list of abstract
+
+  # loop through seach line in the target file
+  for line in input_lines:
+    if line.startswith('###'): #check if line start with ### or ID line
+      abstracts_ID = line
+      abstract_lines = "" #reset the abstrct string if the line is an ID line
+    elif line.isspace(): #check if theres a new line
+      abstract_line_split = abstract_lines.splitlines() #line absract into seperate lines
+
+
+
+      #iterate through each line in each abstract and count them at the same time
+      for abstract_line_number,abstract_line in enumerate(abstract_line_split):
+        line_data = {} #create an empty dictionary for each line
+        target_text_split = abstract_line.split('\t') #split target label from text
+        line_data['target'] = target_text_split[0] #get target label
+        line_data['text'] = target_text_split[1].lower() #get target text and then lower it
+        line_data['line_number'] = abstract_line_number #get the line number the target belongs
+        line_data['total_line_number'] = len(abstract_line_split)-1 #get the total numbers of lines in each abstracts
+        abstract_samples.append(line_data) #add line data to abstact sample list
+    else:
+      abstract_lines += line
+  return abstract_samples
